@@ -10,8 +10,14 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 
 // GET
-app.get("/", (req, res) => {
-  res.render("todo.ejs");
+app.get("/", async (req, res) => {
+  try {
+    const tasks = await Todo.find();
+
+    res.render("todo.ejs", { todoTasks: tasks });
+  } catch (err) {
+    res.redirect("/");
+  }
 });
 
 //POST
