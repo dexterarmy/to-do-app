@@ -32,4 +32,35 @@ app.post("/", async (req, res, next) => {
   }
 });
 
+//UPDATE
+app
+  .route("/edit/:id")
+  .get(async (req, res) => {
+    const id = req.params.id;
+
+    const tasks = await Todo.find();
+    res.render("todoEdit.ejs", { todoTasks: tasks, idTasks: id });
+  })
+  .post(async (req, res) => {
+    try {
+      const id = req.params.id;
+
+      const task = await Todo.findByIdAndUpdate(id, { content: req.body.content });
+      res.redirect("/");
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+
+// DELETE
+app.route("/remove/:id").get(async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Todo.findByIdAndDelete(id);
+    res.redirect("/");
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 module.exports = app;
