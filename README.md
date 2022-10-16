@@ -1,5 +1,7 @@
 # To-Do App
 
+![to-do](todo.png)
+
 - we will use nodejs, express and mongoose to make to do app.
 
 ## Technologies used:
