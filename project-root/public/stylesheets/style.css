@@ -65,7 +65,7 @@ body {
   display: flex;
   flex-direction: row;
 }
-/* 
+
 .todo-list-item form {
   width: 100%;
   display: flex;
@@ -97,7 +97,7 @@ body {
   font-family: "Candal", sans-serif;
   background-color: rgb(223, 43, 43);
   margin-left: 5px;
-} */
+}
 
 .todo-list-item div {
   flex-grow: 2;
